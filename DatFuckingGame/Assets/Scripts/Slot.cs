@@ -18,6 +18,7 @@ namespace Assets.Scripts
 
         public void OnDrop(PointerEventData eventData)
         {
+            Debug.Log("On Drop");
             if (!item)
             {
                 DragHandler.itemBeingDragged.transform.SetParent(transform);
