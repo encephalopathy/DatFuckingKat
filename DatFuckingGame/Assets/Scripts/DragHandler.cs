@@ -2,16 +2,12 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
-
+public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+{
     public static GameObject itemBeingDragged;
     Vector3 startPosition;
     Transform startParent;
-
-	// Use this for initialization
-	void Start () {
-	    
-	}
+    Transform canvas;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -19,25 +15,23 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         startPosition = transform.position;
         startParent = transform.parent;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
+        canvas = GameObject.FindGameObjectWithTag("UI Canvas").transform;
+        transform.SetParent(canvas);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
+    }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        Debug.Log(transform.parent + " == " + canvas);
         itemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
-        if (transform.parent != startParent)
+        if (transform.parent == canvas)
         {
             transform.position = startPosition;
         }
-        transform.position = startPosition;
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
