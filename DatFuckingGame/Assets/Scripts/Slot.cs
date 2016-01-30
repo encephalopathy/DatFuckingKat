@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 namespace Assets.Scripts
 {
     public class Slot : MonoBehaviour, IDropHandler {
-    {
         public GameObject item
         {
             get
