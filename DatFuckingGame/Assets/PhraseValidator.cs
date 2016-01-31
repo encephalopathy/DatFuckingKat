@@ -56,6 +56,10 @@ public class PhraseValidator : MonoBehaviour {
             ChangePhrase();
             Refresh();
             PhraseMatch(this, new EventArgs());
+            if (wordBankProvider != null)
+            {
+                wordBankProvider.RefillEmptyWords();
+            }
         }
     }
 
@@ -127,7 +131,7 @@ public class PhraseValidator : MonoBehaviour {
 			}
 	    }
 
-	    Debug.Log(finalIncantation);
+	    //Debug.Log(finalIncantation);
 		return valid;
 	}
 

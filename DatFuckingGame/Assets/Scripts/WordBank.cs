@@ -32,7 +32,7 @@ public class WordBank {
     }
 
 
-    void Start () {
+    public WordBank () {
         CreateWhatWords();
         CreateWhenWords();
         CreateWhereWords();
