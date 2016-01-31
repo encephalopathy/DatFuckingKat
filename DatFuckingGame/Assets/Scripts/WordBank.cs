@@ -2,140 +2,164 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class WordBank : MonoBehaviour {
+public class WordBank {
 
-    IDictionary<string, string> words = new Dictionary<string, string>();
+    public IDictionary<int, KeyValuePair<string, string>> words = new Dictionary<int, KeyValuePair<string, string>>();
 
     public IList<string> what = new List<string>();
     public IList<string> where = new List<string>();
     public IList<string> when = new List<string>();
     public IList<string> who = new List<string>();
 
-	void Start () {
+    int index = 0;
 
+    public IList<string> this[int i]
+    {
+        get {
+            switch (i)
+            {
+                case 1:
+                    return what;
+                case 2:
+                    return where;
+                case 3:
+                    return when;
+                case 4:
+                    return who;
+            }
+            return null;
+        }
+    }
+
+
+    void Start () {
+        CreateWhatWords();
+        CreateWhenWords();
+        CreateWhereWords();
+        CreateWhoWords();
 	}
 
     private void CreateWhatWords()
     {
         //Put a word + phrase type in the dictionary using words.Add(string, string), and to the list for what.Add(string)
-        words.Add("summoned a spirit", "what");
+        words.Add(index++, new KeyValuePair<string, string>("summoned a spirit", "what"));
         what.Add("summoned a spirit");
 
-        words.Add("sat quietly", "what");
+        words.Add(index++, new KeyValuePair<string, string>("sat quietly", "what"));
         what.Add("sat quietly");
 
-        words.Add("prayed", "what");
+        words.Add(index++, new KeyValuePair<string, string>("prayed", "what"));
         what.Add("prayed");
 
-        words.Add("ran", "what");
+        words.Add(index++, new KeyValuePair<string, string>("ran", "what"));
         what.Add("ran");
 
-        words.Add("howled", "what");
+        words.Add(index++, new KeyValuePair<string, string>("howled", "what"));
         what.Add("howled");
 
-        words.Add("sang", "what");
+        words.Add(index++, new KeyValuePair<string, string>("sang", "what"));
         what.Add("sang");
 
-        words.Add("died", "what");
+        words.Add(index++, new KeyValuePair<string, string>("died", "what"));
         what.Add("died");
 
-        words.Add("galloped", "what");
+        words.Add(index++, new KeyValuePair<string, string>("galloped", "what"));
         what.Add("galloped");
 
-        words.Add("watched hungrily" , "what");
+        words.Add(index++, new KeyValuePair<string, string>("watched hungrily" , "what"));
         what.Add("watched hungrily");
 
     }
 
     private void CreateWhenWords()
     {
-        words.Add("at midnight", "when");
+        words.Add(index++, new KeyValuePair<string, string>("at midnight", "when"));
         when.Add("at midnight");
 
-        words.Add("while others slept", "when");
+        words.Add(index++, new KeyValuePair<string, string>("while others slept", "when"));
         when.Add("while others slept");
 
-        words.Add("all day long", "when");
+        words.Add(index++, new KeyValuePair<string, string>("all day long", "when"));
         when.Add("all day long");
 
-        words.Add("during lunch", "when");
+        words.Add(index++, new KeyValuePair<string, string>("during lunch", "when"));
         when.Add("during lunch");
 
-        words.Add("at tea time", "when");
+        words.Add(index++, new KeyValuePair<string, string>("at tea time", "when"));
         when.Add("at tea time");
 
-        words.Add("during showtime", "when");
+        words.Add(index++, new KeyValuePair<string, string>("during showtime", "when"));
         when.Add("during showtime");
 
-        words.Add("at dusk", "when");
+        words.Add(index++, new KeyValuePair<string, string>("at dusk", "when"));
         when.Add("at dusk");
 
-        words.Add("while on a coffee break", "when");
+        words.Add(index++, new KeyValuePair<string, string>("while on a coffee break", "when"));
         when.Add("while on a coffee break");
 
-        words.Add("tomorrow", "when");
+        words.Add(index++, new KeyValuePair<string, string>("tomorrow", "when"));
         when.Add("tomorrow");
 
     }
 
     private void CreateWhereWords()
     {
-        words.Add("in the basement", "where");
+        words.Add(index++, new KeyValuePair<string, string>("in the basement", "where"));
         where.Add("in the basement");
 
-        words.Add("by the window", "where");
+        words.Add(index++, new KeyValuePair<string, string>("by the window", "where"));
         where.Add("by the window");
 
-        words.Add("within the chapel", "where");
+        words.Add(index++, new KeyValuePair<string, string>("within the chapel", "where"));
         where.Add("within the chapel");
 
-        words.Add("at the factory", "where");
+        words.Add(index++, new KeyValuePair<string, string>("at the factory", "where"));
         where.Add("at the factory");
 
-        words.Add("in the void", "where");
+        words.Add(index++, new KeyValuePair<string, string>("in the void", "where"));
         where.Add("in the void");
 
-        words.Add("at the concert hall", "where");
+        words.Add(index++, new KeyValuePair<string, string>("at the concert hall", "where"));
         where.Add("at the concert hall");
 
-        words.Add("in the center of town", "where");
+        words.Add(index++, new KeyValuePair<string, string>("in the center of town", "where"));
         where.Add("in the center of town");
 
-        words.Add("by the rainbow", "where");
+        words.Add(index++, new KeyValuePair<string, string>("by the rainbow", "where"));
         where.Add("by the rainbow");
 
-        words.Add("from the abyss", "where");
+        words.Add(index++, new KeyValuePair<string, string>("from the abyss", "where"));
         where.Add("from the abyss");
 
     }
 
     private void CreateWhoWords()
     {
-        words.Add("the occultist", "who");
+        words.Add(index++, new KeyValuePair<string, string>("the occultist", "who"));
         who.Add("the occultist");
 
-                words.Add("the cat", "who");
+        words.Add(index++, new KeyValuePair<string, string>("the cat", "who"));
         who.Add("the cat");
 
-                words.Add("the troubled cleric", "who");
+        words.Add(index++, new KeyValuePair<string, string>("the troubled cleric", "who"));
         who.Add("the troubled cleric");
 
-                words.Add("the vile machine", "who");
+        words.Add(index++, new KeyValuePair<string, string>("the vile machine", "who"));
         who.Add("the vile machine");
 
-                words.Add("the spooked spirit", "who");
+        words.Add(index++, new KeyValuePair<string, string>("the spooked spirit", "who"));
         who.Add("The Spooked Spirit");
 
-                words.Add("the muse", "who");
+        words.Add(index++, new KeyValuePair<string, string>("the muse", "who"));
         who.Add("the muse");
 
-                words.Add("the cowboy", "who");
+        words.Add(index++, new KeyValuePair<string, string>("the cowboy", "who"));
         who.Add("the cowboy");
 
-                words.Add("the unicorn", "who");
+        words.Add(index++, new KeyValuePair<string, string>("the unicorn", "who"));
         who.Add("the unicorn");
 
-                words.Add("the eyes", "who");
+        words.Add(index++, new KeyValuePair<string, string>("the eyes", "who"));
         who.Add("the eyes");
 
     }

@@ -39,8 +39,12 @@ public class PhraseValidator : MonoBehaviour {
 // I know...I KNOW OK? It's a game jam...and I don't care...STOP JUDGING ME!
 	public bool isValidPhrase(GameObject[] slots) {
 		bool valid = false;
-		if(slots[0].transform.GetComponentInChildren<wordValuesDto>() != null &&
-		slots[1].transform.GetComponentInChildren<wordValuesDto>() != null &&
+
+        wordValuesDto slotOne = slots[0].transform.GetComponentInChildren<wordValuesDto>();
+        wordValuesDto slotTwo = slots[1].transform.GetComponentInChildren<wordValuesDto>();
+
+        if (slotOne != null &&
+		slotTwo != null &&
 		slots[2].transform.GetComponentInChildren<wordValuesDto>() != null &&
 		slots[3].transform.GetComponentInChildren<wordValuesDto>() != null ) {
 			if(slots[3].transform.GetChild(0).GetComponent<wordValuesDto>().wordType == "who" &&
