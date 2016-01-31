@@ -117,6 +117,18 @@ public class WordBank {
         words.Add("watched hungrily" , "what");
         what.Add("watched hungrily");
 
+        words.Add("crushed people", "what");
+        what.Add("crushed people");
+
+        words.Add("danced", "what");
+        what.Add("danced");
+
+        words.Add("planted roses", "what");
+        what.Add("planted roses");
+
+        words.Add("read poetry", "what");
+        what.Add("read poetry");
+
     }
 
     private void CreateWhenWords()
@@ -147,6 +159,18 @@ public class WordBank {
 
         words.Add("tomorrow", "when");
         when.Add("tomorrow");
+
+        words.Add("before breakfast", "when");
+        when.Add("before breakfast");
+
+        words.Add("last week", "when");
+        when.Add("last week");
+
+        words.Add("in July", "when");
+        when.Add("in July");
+
+        words.Add("during brunch", "when");
+        when.Add("during brunch");
 
     }
 
@@ -179,6 +203,18 @@ public class WordBank {
         words.Add("from the abyss", "where");
         where.Add("from the abyss");
 
+        words.Add("in the village", "where");
+        where.Add("in the village");
+
+        words.Add("during the ceremony", "where");
+        where.Add("during the ceremony");
+
+        words.Add("in the garden", "where");
+        where.Add("in the garden");
+
+        words.Add("at the dog park", "where");
+        where.Add("at the dog park");
+
     }
 
     private void CreateWhoWords()
@@ -209,6 +245,18 @@ public class WordBank {
 
         words.Add("the eyes", "who");
         who.Add("the eyes");
+
+        words.Add("the monster", "who");
+        who.Add("the monster");
+
+        words.Add("Abraham Lincoln", "who");
+        who.Add("Abraham Lincoln");
+
+        words.Add("Jacob", "who");
+        who.Add("Jacob");
+
+        words.Add("Cecil", "who");
+        who.Add("Cecil");
 
     }
 	
