@@ -1233,6 +1233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeSpeed: 1.5
+  manager: {fileID: 0}
+  logic: {fileID: 0}
 --- !u!4 &1875945385
 Transform:
   m_ObjectHideFlags: 0
