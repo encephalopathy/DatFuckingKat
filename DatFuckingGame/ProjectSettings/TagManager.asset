@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Word
   - UI Canvas
+  - WordBank
   layers:
   - Default
   - TransparentFX
