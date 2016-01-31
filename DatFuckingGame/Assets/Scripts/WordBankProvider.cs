@@ -30,7 +30,6 @@ public class WordBankProvider : MonoBehaviour {
                 //TODO: Do something smarter than this.
                 int index = Random.Range(0, wordBank.words.Count);
 
-                //Debug.Log("Random index: " + index);
                 KeyValuePair<string, string> field = wordBank.words[index];
                 GameObject text = Instantiate(textObject, Vector3.zero, Quaternion.identity) as GameObject;
                 wordValuesDto dto = text.GetComponent<wordValuesDto>();

@@ -11,11 +11,15 @@ public class PhraseValidator : MonoBehaviour {
 
     public event EventHandler<EventArgs>PhraseMatch;
 
+    //Used to match 
     public string[] phraseMatch = null;
 
 	public GameObject slotA,slotB,slotC,slotD;
 	public GameObject[] slots;
     public WordBankProvider wordBankProvider;
+
+    //Used so isValid function does not get called more than once.
+    bool wasLastPhraseValid = false;
 
     public float delay = 2;
 
@@ -51,27 +55,43 @@ public class PhraseValidator : MonoBehaviour {
 
     public void Update()
     {
-        if (isValid())
+        bool isCurrentPhraseValid = isValid();
+        if (isCurrentPhraseValid && !wasLastPhraseValid)
         {
-            ChangePhrase();
-            Refresh();
-            PhraseMatch(this, new EventArgs());
-            if (wordBankProvider != null)
-            {
-                wordBankProvider.RefillEmptyWords();
-            }
+            StartCoroutine(VerifyPhraseAction(2.0f));
+        }
+
+        wasLastPhraseValid = isCurrentPhraseValid;
+    }
+
+    /// <summary>
+    /// Performs a small delay of 2 seconds before the phrase changes, the words get deleted for the phrase,
+    /// and the phrase match events occurs.  This is also the time when the empty words in the word bank get
+    /// replaced with an actual word.
+    /// </summary>
+    /// <param name="waitTime"></param>
+    /// <returns></returns>
+    public IEnumerator VerifyPhraseAction(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        ChangePhrase();
+        Refresh();
+        PhraseMatch(this, new EventArgs());
+        if (wordBankProvider != null)
+        {
+            wordBankProvider.RefillEmptyWords();
         }
     }
 
+    /// <summary>
+    /// Destroys all words in the AvailableWordsPanel
+    /// </summary>
     public void Refresh()
     {
         DestroyChildren(slotA.transform);
         DestroyChildren(slotB.transform);
         DestroyChildren(slotC.transform);
         DestroyChildren(slotD.transform);
-
-        
-        //Reshuffle blank words in word bank.
     }
 
     private void DestroyChildren(Transform transform)
@@ -131,15 +151,19 @@ public class PhraseValidator : MonoBehaviour {
 			}
 	    }
 
-	    //Debug.Log(finalIncantation);
 		return valid;
 	}
 
 	public void addPhrase() {
-		finalIncantation += slots[3].transform.GetChild(0).GetComponent<wordValuesDto>().wordText + " ";
-		finalIncantation += slots[2].transform.GetChild(0).GetComponent<wordValuesDto>().wordText + " ";
-		finalIncantation += slots[1].transform.GetChild(0).GetComponent<wordValuesDto>().wordText + " ";
-		finalIncantation += slots[0].transform.GetChild(0).GetComponent<wordValuesDto>().wordText + ".";
+        wordValuesDto slotOne = slots[0].GetComponentInChildren<wordValuesDto>();
+        wordValuesDto slotTwo = slots[1].GetComponentInChildren<wordValuesDto>();
+        wordValuesDto slotThree = slots[2].GetComponentInChildren<wordValuesDto>();
+        wordValuesDto slotFour = slots[3].GetComponentInChildren<wordValuesDto>();
+
+        finalIncantation += slotOne.wordText + " ";
+		finalIncantation += slotTwo.wordText + " ";
+		finalIncantation += slotThree.wordText + " ";
+		finalIncantation += slotFour.wordText + ".\n";
 	}
 
 
