@@ -71,7 +71,7 @@ public class PhraseValidator : MonoBehaviour {
         {
             if (!audioSouces[0].isPlaying)
             {
-                audioSouces[0].PlayDelayed(3);
+                audioSouces[0].Play();
                 foreach (GameObject slot in slots)
                 {
                     slot.GetComponentInChildren<DragHandler>().SetToOriginalParent();
@@ -98,7 +98,7 @@ public class PhraseValidator : MonoBehaviour {
         if (wordBankProvider != null)
         {
             wordBankProvider.RefillEmptyWords();
-            audioSouces[1].PlayDelayed(3);
+            audioSouces[1].Play();
         }
     }
 
