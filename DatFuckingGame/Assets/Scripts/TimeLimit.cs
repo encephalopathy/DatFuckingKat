@@ -4,11 +4,14 @@ using System.Collections;
 
 public class TimeLimit : MonoBehaviour {
 
-    float startTime = 200f;
+    float startTime = 100.0f;
     float timeLimit = 90.0f;
     float timeTaken = 0f;
 
     public bool timeOver = false;
+    public GameObject manager;
+    public GameObject logic;
+    public GameObject fadeObject;
 
     Text timeLimitText;
     // Use this for initialization
@@ -27,8 +30,15 @@ public class TimeLimit : MonoBehaviour {
         // Format the time nicely
         timeLimitText.text = FormatTime(timeTaken);
 
-        if (timeTaken >= timeLimit)
+        if (timeTaken >= timeLimit) {
             timeOver = true;
+            Debug.Log(timeTaken);
+        }
+        else {
+            manager.GetComponent<StateManagerScript>().state=2;
+            fadeObject.GetComponent<FadeIn>().FadeToBlack();
+            logic.SetActive(false);
+        }
 
     }
 

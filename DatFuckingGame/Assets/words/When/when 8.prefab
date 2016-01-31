@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9e3359412d34cbcb02c9e5228cf618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wordText: 
+  wordText: tomorrow
   wordType: when
 --- !u!222 &22224998
 CanvasRenderer:
@@ -128,7 +128,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: wordText
-      value: 
+      value: tomorrow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
