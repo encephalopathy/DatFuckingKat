@@ -2,9 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class WordBank {
 
     public IDictionary<string, string> words = new Dictionary<string, string>();
+
+    public string[] phrase;
 
     public IList<string> what = new List<string>();
     public IList<string> where = new List<string>();
@@ -20,23 +23,18 @@ public class WordBank {
             do {
                 switch (i)
                 {
-                    case 1:
+                    case 0:
                         wordList = what;
                         break;
-                    case 2:
+                    case 1:
                         wordList = where;
                         break;
-                    case 3:
+                    case 2:
                         wordList = when;
                         break;
-                    case 4:
+                    default:
                         wordList = who;
                         break;
-                }
-                if (wordList == null)
-                {
-                    Debug.Log("wordlist! I am null!");
-                    i = (i + 1) % 4;
                 }
                 
             } while ((wordList == null || wordList.Count == 0) && what.Count > 0 && where.Count > 0 && when.Count > 0 && who.Count > 0);
@@ -45,6 +43,30 @@ public class WordBank {
             wordList.RemoveAt(0);
             return new KeyValuePair<string, string>(wordKey, words[wordKey]);
         }
+    }
+
+    public string GetWord(string type)
+    {
+        IList<string> wordList = null;
+        switch (type)
+        {
+            case "who":
+                wordList = what;
+                break;
+            case "what":
+                wordList = where;
+                break;
+            case "where":
+                wordList = when;
+                break;
+            case "when":
+                wordList = who;
+                break;
+        }
+        if (wordList.Count == 0) return string.Empty;
+        string wordKey = wordList[0];
+        wordList.RemoveAt(0);
+        return words[wordKey];
     }
 
     public IEnumerable<TValue> RandomValues<TKey, TValue>(IDictionary<TKey, TValue> dict)

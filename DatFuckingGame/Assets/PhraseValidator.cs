@@ -37,11 +37,11 @@ public class PhraseValidator : MonoBehaviour {
 	}
 
 	public GameObject[] getSlots () {
-		slots[0] = slotA;
-		slots[1] = slotB;
-		slots[2] = slotC;
-		slots[3] = slotD;
-		Debug.Log(slots[0]);
+        slots[3] = slotA;
+        slots[2] = slotB;
+        slots[1] = slotC;
+        slots[0] = slotD;
+        Debug.Log(slots[0]);
 		Debug.Log(slots[1]);
 		Debug.Log(slots[2]);
 		Debug.Log(slots[3]);
@@ -60,7 +60,7 @@ public class PhraseValidator : MonoBehaviour {
         bool isCurrentPhraseValid = isValid();
         if (isCurrentPhraseValid && !wasLastPhraseValid)
         {
-            Debug.Log("MatchFound");
+            Debug.Log("MATCH FOUND!!!!");
             StartCoroutine(VerifyPhraseAction(phraseMatchEventDelay));
         }
 
@@ -117,56 +117,45 @@ public class PhraseValidator : MonoBehaviour {
 	public bool isValidPhrase(GameObject[] slots) {
 		bool valid = false;
 
-        wordValuesDto slotOne = slots[0].GetComponentInChildren<wordValuesDto>();
-        wordValuesDto slotTwo = slots[1].GetComponentInChildren<wordValuesDto>();
-        wordValuesDto slotThree = slots[2].GetComponentInChildren<wordValuesDto>();
-        wordValuesDto slotFour = slots[3].GetComponentInChildren<wordValuesDto>();
+        if (slots[0].transform.GetComponentInChildren<wordValuesDto>() != null &&
+        slots[1].transform.GetComponentInChildren<wordValuesDto>() != null &&
+        slots[2].transform.GetComponentInChildren<wordValuesDto>() != null &&
+        slots[3].transform.GetComponentInChildren<wordValuesDto>() != null)
+        {
+            if (slots[3].transform.GetChild(0).GetComponent<wordValuesDto>().wordType == "who" &&
+             slots[2].transform.GetChild(0).GetComponent<wordValuesDto>().wordType == "what" &&
+             slots[1].transform.GetChild(0).GetComponent<wordValuesDto>().wordType == "when" &&
+             slots[0].transform.GetChild(0).GetComponent<wordValuesDto>().wordType == "where")
+            {
+                valid = true;
+                addPhrase();
+            }
+            else if (slots[3].transform.GetChild(0).GetComponent<wordValuesDto>().wordType == "when" &&
+             slots[2].transform.GetChild(0).GetComponent<wordValuesDto>().wordType == "who" &&
+             slots[1].transform.GetChild(0).GetComponent<wordValuesDto>().wordType == "what" &&
+             slots[0].transform.GetChild(0).GetComponent<wordValuesDto>().wordType == "where")
+            {
+                valid = true;
+                addPhrase();
+            }
+            else if (slots[3].transform.GetChild(0).GetComponent<wordValuesDto>().wordType == "who" &&
+             slots[2].transform.GetChild(0).GetComponent<wordValuesDto>().wordType == "what" &&
+             slots[1].transform.GetChild(0).GetComponent<wordValuesDto>().wordType == "where" &&
+             slots[0].transform.GetChild(0).GetComponent<wordValuesDto>().wordType == "when")
+            {
+                valid = true;
+                addPhrase();
+            }
+        }
 
-        string phraseOne = phraseMatch[0];
-        string phraseTwo = phraseMatch[1];
-        string phraseThree = phraseMatch[2];
-        string phraseFour = phraseMatch[3];
-
-        if (slotOne != null &&
-		slotTwo != null &&
-		slotThree != null &&
-		slotFour != null ) {
-			if(slotOne.wordType == phraseOne &&
-			 slotTwo.wordType == phraseTwo && 
-			 slotThree.wordType == phraseThree && 
-			 slotFour.wordType == phraseFour  ) {
-				valid = true;
-				addPhrase();
-			}
-			else if (slotOne.wordType == phraseOne &&
-			 slotTwo.wordType == phraseTwo && 
-			 slotThree.wordType == phraseThree && 
-			 slotFour.wordType == phraseFour  ) {
-			 	valid = true;
-			 	addPhrase();
-			}
-			else if (slotOne.wordType == phraseOne &&
-			 slotTwo.wordType == phraseTwo && 
-			 slotThree.wordType == phraseThree && 
-			 slotFour.wordType == phraseFour  ) {
-				valid = true;
-				addPhrase();
-			}
-	    }
-
-		return valid;
+            return valid;
 	}
 
 	public void addPhrase() {
-        wordValuesDto slotOne = slots[0].GetComponentInChildren<wordValuesDto>();
-        wordValuesDto slotTwo = slots[1].GetComponentInChildren<wordValuesDto>();
-        wordValuesDto slotThree = slots[2].GetComponentInChildren<wordValuesDto>();
-        wordValuesDto slotFour = slots[3].GetComponentInChildren<wordValuesDto>();
-
-        finalIncantation += slotOne.wordText + " ";
-		finalIncantation += slotTwo.wordText + " ";
-		finalIncantation += slotThree.wordText + " ";
-		finalIncantation += slotFour.wordText + ".\n";
+        finalIncantation += slots[3].transform.GetChild(0).GetComponent<wordValuesDto>().wordText + " ";
+        finalIncantation += slots[2].transform.GetChild(0).GetComponent<wordValuesDto>().wordText + " ";
+        finalIncantation += slots[1].transform.GetChild(0).GetComponent<wordValuesDto>().wordText + " ";
+        finalIncantation += slots[0].transform.GetChild(0).GetComponent<wordValuesDto>().wordText + ".";
 	}
 
 

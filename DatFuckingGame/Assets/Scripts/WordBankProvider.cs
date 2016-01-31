@@ -12,6 +12,8 @@ public class WordBankProvider : MonoBehaviour {
 
     public GameObject textObject;
 
+    public GameObject slotPanel;
+
 	// Use this for initialization
 	public void Start () {
         wordBank = new WordBank();
@@ -21,24 +23,60 @@ public class WordBankProvider : MonoBehaviour {
 
     public void RefillEmptyWords()
     {
+        int numberOfSlots = slots.Length;
+        List<Text> textStringToShuffle = new List<Text>();
         //Debug.Log("Word count: ")
         //DebugDic(wordBank.words);
         
-        foreach (GameObject slot in slots)
+        for (int i = 0; i <  numberOfSlots; ++i)
         {
-            
-            if (slot.GetComponentInChildren<Text>() == null)
+            GameObject slot = slots[i];
+            PhraseValidator phraseValidatorRef = slotPanel.GetComponent<PhraseValidator>();
+            GameObject text = null;
+            if (i < phraseValidatorRef.phraseMatch.Length)
+            {
+                string word = wordBank.GetWord(phraseValidatorRef.phraseMatch[i]);
+                text = Instantiate(textObject, Vector3.zero, Quaternion.identity) as GameObject;
+                wordValuesDto dto = text.GetComponent<wordValuesDto>();
+                dto.wordText = word;
+                dto.wordType = phraseValidatorRef.phraseMatch[i];
+                text.GetComponent<Text>().text = word;
+                text.transform.SetParent(slot.transform);
+            }
+            else if (slot.GetComponentInChildren<Text>() == null)
             {
                 //TODO: Do something smarter than this.
                 int index = Random.Range(0, 4);
                 KeyValuePair<string, string> word = wordBank[index];
-                GameObject text = Instantiate(textObject, Vector3.zero, Quaternion.identity) as GameObject;
+                text = Instantiate(textObject, Vector3.zero, Quaternion.identity) as GameObject;
                 wordValuesDto dto = text.GetComponent<wordValuesDto>();
                 dto.wordText = word.Key;
                 dto.wordType = word.Value;
                 text.GetComponent<Text>().text = word.Key;
                 text.transform.SetParent(slot.transform);
             }
+            textStringToShuffle.Add(text.GetComponent<Text>());
+        }
+
+        //Shuffle all the aviable word bank options so it is a bit more interesting.
+        Shuffle(textStringToShuffle);
+    }
+
+    /// <summary>
+    /// Fisher Yates Shuffle over an array, ensures uniform randomness.
+    /// </summary>
+    /// <param name="array"></param>
+    private void Shuffle(List<Text> array)
+    {
+        int n = array.Count;
+        for (int i = 0; i < n; i++)
+        {
+            // NextDouble returns a random number between 0 and 1.
+            // ... It is equivalent to Math.random() in Java.
+            int r = i + (int)(new System.Random().NextDouble() * (n - i));
+            string t = array[r].text;
+            array[r].text = array[i].text;
+            array[i].text = t;
         }
     }
 
