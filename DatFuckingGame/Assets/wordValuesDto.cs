@@ -3,6 +3,7 @@ using System.Collections;
 
 public class wordValuesDto : MonoBehaviour {
 
+	public string wordText = "the occultist";
 	public string wordType = "who";
 
 
