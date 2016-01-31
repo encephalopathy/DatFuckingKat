@@ -11,8 +11,6 @@ public class PhraseValidator : MonoBehaviour {
 
     public event EventHandler<EventArgs>PhraseMatch;
 
-    public float phraseMatchEventDelay = 2f;
-
     //Used to match 
     public string[] phraseMatch = null;
 
@@ -64,7 +62,7 @@ public class PhraseValidator : MonoBehaviour {
         if (isCurrentPhraseValid && !wasLastPhraseValid)
         {
             Debug.Log("MATCH FOUND!!!!");
-            StartCoroutine(VerifyPhraseAction(phraseMatchEventDelay));
+            VerifyPhraseAction();
             
         }
         else if (AreAllSlotsFilled() && !isCurrentPhraseValid)
@@ -89,9 +87,8 @@ public class PhraseValidator : MonoBehaviour {
     /// </summary>
     /// <param name="waitTime"></param>
     /// <returns></returns>
-    public IEnumerator VerifyPhraseAction(float waitTime)
+    public void VerifyPhraseAction()
     {
-        yield return new WaitForSeconds(waitTime);
         ChangePhrase();
         Refresh();
         PhraseMatch(this, new EventArgs());
