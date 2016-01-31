@@ -3,6 +3,8 @@ using System.Collections;
 
 public class FadeIn : MonoBehaviour {
 public float fadeSpeed = 1.5f;          // Speed that the screen fades to and from black.
+public GameObject manager;
+public GameObject logic;
     
     
     private bool sceneStarting = false;      // Whether or not the scene is still fading in.
@@ -16,6 +18,9 @@ public float fadeSpeed = 1.5f;          // Speed that the screen fades to and fr
 
     public void setSceneStart() {
     	sceneStarting = true;
+        manager.transform.GetComponent<StateManagerScript>().state = 1;
+
+
     }
     
     
@@ -35,7 +40,7 @@ public float fadeSpeed = 1.5f;          // Speed that the screen fades to and fr
     }
     
     
-    void FadeToBlack ()
+    public void FadeToBlack ()
     {
         // Lerp the colour of the texture between itself and black.
         GetComponent<GUITexture>().color = Color.Lerp(GetComponent<GUITexture>().color, Color.black, fadeSpeed * Time.deltaTime);
@@ -56,6 +61,7 @@ public float fadeSpeed = 1.5f;          // Speed that the screen fades to and fr
             
             // The scene is no longer starting.
             sceneStarting = false;
+            logic.SetActive(true);
         }
     }
     

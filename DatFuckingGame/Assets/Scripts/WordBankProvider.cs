@@ -61,7 +61,7 @@ public class WordBankProvider : MonoBehaviour {
         }
 
         //Shuffle all the aviable word bank options so it is a bit more interesting.
-        Shuffle(textStringToShuffle);
+       // Shuffle(textStringToShuffle);
     }
 
     /// <summary>
