@@ -19,8 +19,9 @@ namespace Assets.Scripts
         public void OnDrop(PointerEventData eventData)
         {
             Debug.Log("On Drop");
-            if (!item)
-            {
+            if (!item) {
+
+                GetComponent<AudioSource>().Play();
                 DragHandler.itemBeingDragged.transform.SetParent(transform);
             }
         }

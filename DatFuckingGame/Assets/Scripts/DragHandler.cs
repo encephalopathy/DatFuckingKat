@@ -8,6 +8,18 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     Transform startParent;
     Transform oldParent;
     Transform canvas;
+    Transform originalParent;
+
+
+    public void Start()
+    {
+        originalParent = transform.parent;
+    }
+
+    public void SetToOriginalParent()
+    {
+        transform.SetParent(originalParent);
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -27,8 +39,8 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("On end Drag");
-        Debug.Log(transform.parent + " == " + canvas);
+        //Debug.Log("On end Drag");
+        //Debug.Log(transform.parent + " == " + canvas);
         itemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         if (transform.parent == canvas)

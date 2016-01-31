@@ -19,6 +19,7 @@ public class PhraseValidator : MonoBehaviour {
 	public GameObject slotA,slotB,slotC,slotD;
 	public GameObject[] slots;
     public WordBankProvider wordBankProvider;
+    public AudioSource[] audioSouces;
 
     //Used so isValid function does not get called more than once.
     bool wasLastPhraseValid = false;
@@ -34,17 +35,18 @@ public class PhraseValidator : MonoBehaviour {
         phraseMatchPossibilities[2] = new string[4] { "when", "who", "what", "where" };
 
         ChangePhrase();
-	}
+        audioSouces = GetComponents<AudioSource>();
+    }
 
 	public GameObject[] getSlots () {
         slots[0] = slotA;
         slots[1] = slotB;
         slots[2] = slotC;
         slots[3] = slotD;
-        Debug.Log(slots[0]);
-		Debug.Log(slots[1]);
-		Debug.Log(slots[2]);
-		Debug.Log(slots[3]);
+        //Debug.Log(slots[0]);
+		//Debug.Log(slots[1]);
+		//Debug.Log(slots[2]);
+		//Debug.Log(slots[3]);
 
 		return slots;
 
@@ -58,10 +60,23 @@ public class PhraseValidator : MonoBehaviour {
     public void Update()
     {
         bool isCurrentPhraseValid = isValid();
+        
         if (isCurrentPhraseValid && !wasLastPhraseValid)
         {
             Debug.Log("MATCH FOUND!!!!");
             StartCoroutine(VerifyPhraseAction(phraseMatchEventDelay));
+            
+        }
+        else if (AreAllSlotsFilled() && !isCurrentPhraseValid)
+        {
+            if (!audioSouces[0].isPlaying)
+            {
+                audioSouces[0].PlayDelayed(3);
+                foreach (GameObject slot in slots)
+                {
+                    slot.GetComponentInChildren<DragHandler>().SetToOriginalParent();
+                }
+            }
         }
 
         wasLastPhraseValid = isCurrentPhraseValid;
@@ -83,6 +98,7 @@ public class PhraseValidator : MonoBehaviour {
         if (wordBankProvider != null)
         {
             wordBankProvider.RefillEmptyWords();
+            audioSouces[1].PlayDelayed(3);
         }
     }
 
@@ -112,6 +128,19 @@ public class PhraseValidator : MonoBehaviour {
     	}
     	return false;
 	}
+
+    private bool AreAllSlotsFilled()
+    {
+        wordValuesDto slotOne = slots[0].GetComponentInChildren<wordValuesDto>();
+        wordValuesDto slotTwo = slots[1].GetComponentInChildren<wordValuesDto>();
+        wordValuesDto slotThree = slots[2].GetComponentInChildren<wordValuesDto>();
+        wordValuesDto slotFour = slots[3].GetComponentInChildren<wordValuesDto>();
+
+        return slotOne != null &&
+        slotTwo != null &&
+        slotThree != null &&
+        slotFour != null;
+    }
 
 // I know...I KNOW OK? It's a game jam...and I don't care...STOP JUDGING ME!
 	public bool isValidPhrase(GameObject[] slots) {
