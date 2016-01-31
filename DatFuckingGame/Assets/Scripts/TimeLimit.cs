@@ -4,7 +4,7 @@ using System.Collections;
 
 public class TimeLimit : MonoBehaviour {
 
-    float startTime = 100.0f;
+    float startTime = 1000.0f;
     float timeLimit = 90.0f;
     float timeTaken = 0f;
 
@@ -28,11 +28,20 @@ public class TimeLimit : MonoBehaviour {
     void Update () {
         timeTaken = startTime - Time.time;
         // Format the time nicely
+        if (timeTaken < startTime / 2)
+        {
+            GetComponent<Text>().color = Color.yellow;
+        }
+        else if (timeTaken < startTime * .1f)
+        {
+            GetComponent<Text>().color = Color.red;
+        }
+
         timeLimitText.text = FormatTime(timeTaken);
 
-        if (timeTaken >= timeLimit) {
+        if (timeTaken < 0) {
             timeOver = true;
-            Debug.Log(timeTaken);
+            //Debug.Log(timeTaken);
         }
         else {
             manager.GetComponent<StateManagerScript>().state=2;
