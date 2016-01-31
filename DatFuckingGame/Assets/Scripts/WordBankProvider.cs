@@ -16,8 +16,7 @@ public class WordBankProvider : MonoBehaviour {
             KeyValuePair<string, string> field = wordBank.words[index];
             if (field.Key == "Food" && field.Value == "Red")
             {
-                (obj as Text).text = field.Key;
-                field.RemoveAt(0);
+                //(obj as Text).text = field.Key;
             }
         }
 	}
