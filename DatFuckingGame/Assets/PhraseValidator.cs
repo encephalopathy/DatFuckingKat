@@ -58,9 +58,14 @@ public class PhraseValidator : MonoBehaviour {
     {
         phraseMatch = phraseMatchPossibilities[UnityEngine.Random.Range(0, phraseMatchPossibilities.Length)];
         slotA.GetComponent<Image>().color = GetPhraseColor(phraseMatch[0]);
+        textA.text = phraseMatch[0];
+        ///textA.color = GetPhraseColor(phraseMatch[0]);
         slotB.GetComponent<Image>().color = GetPhraseColor(phraseMatch[1]);
+        textB.text = phraseMatch[1];
         slotC.GetComponent<Image>().color = GetPhraseColor(phraseMatch[2]);
+        textC.text = phraseMatch[2];
         slotD.GetComponent<Image>().color = GetPhraseColor(phraseMatch[3]);
+        textD.text = phraseMatch[3];
     }
 
     private Color GetPhraseColor(string phrase)

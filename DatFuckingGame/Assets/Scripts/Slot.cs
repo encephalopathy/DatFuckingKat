@@ -24,6 +24,7 @@ namespace Assets.Scripts
                 GetComponent<AudioSource>().Play();
                 DragHandler.itemBeingDragged.transform.SetParent(transform);
             }
+            //
         }
     }
 }
