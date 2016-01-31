@@ -14,6 +14,8 @@ public class WordBankProvider : MonoBehaviour {
 
     public GameObject slotPanel;
 
+    private Dictionary<int, GameObject> slotsDic = new Dictionary<int, GameObject>();
+
 	// Use this for initialization
 	public void Start () {
         wordBank = new WordBank();
@@ -33,35 +35,77 @@ public class WordBankProvider : MonoBehaviour {
             GameObject slot = slots[i];
             PhraseValidator phraseValidatorRef = slotPanel.GetComponent<PhraseValidator>();
             GameObject text = null;
-            if (i < phraseValidatorRef.phraseMatch.Length)
+            //Who
+            if (i < 2)
             {
-                string word = wordBank.GetWord(phraseValidatorRef.phraseMatch[i]);
-                text = Instantiate(textObject, Vector3.zero, Quaternion.identity) as GameObject;
-                wordValuesDto dto = text.GetComponent<wordValuesDto>();
-                Debug.Log("Word Text: " + word);
-                Debug.Log("Word Type: " + phraseValidatorRef.phraseMatch[i]);
-                dto.wordText = word;
-                dto.wordType = phraseValidatorRef.phraseMatch[i];
-                text.GetComponent<Text>().text = word;
-                text.transform.SetParent(slot.transform);
+                text = CreateTextObject(i, "who", slot, phraseValidatorRef);
             }
-            else if (slot.GetComponentInChildren<Text>() == null)
+            //what
+            else if (i < 4)
             {
-                //TODO: Do something smarter than this.
-                int index = Random.Range(0, 4);
-                KeyValuePair<string, string> word = wordBank[index];
-                text = Instantiate(textObject, Vector3.zero, Quaternion.identity) as GameObject;
-                wordValuesDto dto = text.GetComponent<wordValuesDto>();
-                dto.wordText = word.Key;
-                dto.wordType = word.Value;
-                text.GetComponent<Text>().text = word.Key;
-                text.transform.SetParent(slot.transform);
+                text = CreateTextObject(i, "what", slot, phraseValidatorRef);
             }
-            textStringToShuffle.Add(text.GetComponent<Text>());
+            //where
+            else if (i < 6)
+            {
+                text = CreateTextObject(i, "where", slot, phraseValidatorRef);
+            }
+            //when
+            else if (i < 8)
+            {
+                text = CreateTextObject(i, "when", slot, phraseValidatorRef);
+            }
+            //if (i < phraseValidatorRef.phraseMatch.Length)
+            //{
+            //    string word = wordBank.GetWord(phraseValidatorRef.phraseMatch[i]);
+            //    text = Instantiate(textObject, Vector3.zero, Quaternion.identity) as GameObject;
+            //    wordValuesDto dto = text.GetComponent<wordValuesDto>();
+            //    Debug.Log("Word Text: " + word);
+            //    Debug.Log("Word Type: " + phraseValidatorRef.phraseMatch[i]);
+            //    dto.wordText = word;
+            //    dto.wordType = phraseValidatorRef.phraseMatch[i];
+            //    text.GetComponent<Text>().text = word;
+            //    text.transform.SetParent(slot.transform);
+            //}
+            //if (slot.GetComponentInChildren<Text>() == null)
+            //{
+            //    //TODO: Do something smarter than this.
+            //    int index = Random.Range(0, 4);
+            //    KeyValuePair<string, string> word = wordBank[index];
+            //    text = Instantiate(textObject, Vector3.zero, Quaternion.identity) as GameObject;
+            //    wordValuesDto dto = text.GetComponent<wordValuesDto>();
+            //    dto.wordText = word.Key;
+            //    dto.wordType = word.Value;
+            //    text.GetComponent<Text>().text = word.Key;
+            //    text.transform.SetParent(slot.transform);
+            //}
+            if (text != null)
+            {
+                textStringToShuffle.Add(text.GetComponent<Text>());
+            }
         }
 
         //Shuffle all the aviable word bank options so it is a bit more interesting.
        // Shuffle(textStringToShuffle);
+    }
+
+    private GameObject CreateTextObject(int i, string type, GameObject slot, PhraseValidator phraseValidatorRef)
+    {
+        if (slot.GetComponentInChildren<Text>() == null)
+        {
+            GameObject text = null;
+            string word = wordBank.GetWord(type);
+            text = Instantiate(textObject, Vector3.zero, Quaternion.identity) as GameObject;
+            wordValuesDto dto = text.GetComponent<wordValuesDto>();
+            Debug.Log("Word Text: " + word);
+            //Debug.Log("Word Type: " + phraseValidatorRef.phraseMatch[i]);
+            dto.wordText = word;
+            dto.wordType = type;
+            text.GetComponent<Text>().text = word;
+            text.transform.SetParent(slot.transform);
+            return text;
+        }
+        return null;
     }
 
     /// <summary>
