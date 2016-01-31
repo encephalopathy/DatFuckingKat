@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 public class PhraseValidator : MonoBehaviour {
 
@@ -15,6 +16,8 @@ public class PhraseValidator : MonoBehaviour {
     public string[] phraseMatch = null;
 
 	public GameObject slotA,slotB,slotC,slotD;
+    public Color whoColor, whatColor, whereColor, whenColor;
+    public Text textA, textB, textC, textD;
 	public GameObject[] slots;
     public WordBankProvider wordBankProvider;
     public AudioSource[] audioSouces;
@@ -33,6 +36,7 @@ public class PhraseValidator : MonoBehaviour {
         phraseMatchPossibilities[2] = new string[4] { "when", "who", "what", "where" };
 
         ChangePhrase();
+
         audioSouces = GetComponents<AudioSource>();
     }
 
@@ -53,6 +57,36 @@ public class PhraseValidator : MonoBehaviour {
     private void ChangePhrase()
     {
         phraseMatch = phraseMatchPossibilities[UnityEngine.Random.Range(0, phraseMatchPossibilities.Length)];
+        slotA.GetComponent<Image>().color = GetPhraseColor(phraseMatch[0]);
+        slotB.GetComponent<Image>().color = GetPhraseColor(phraseMatch[1]);
+        slotC.GetComponent<Image>().color = GetPhraseColor(phraseMatch[2]);
+        slotD.GetComponent<Image>().color = GetPhraseColor(phraseMatch[3]);
+    }
+
+    private Color GetPhraseColor(string phrase)
+    {
+        Color ret = Color.white;
+        switch (phrase)
+        {
+            case ("who"): {
+                    ret = whoColor;
+                    break;
+                }
+            case ("what"): {
+                    ret = whatColor;
+                    break;
+                }
+            case ("where"): {
+                    ret = whereColor;
+                    break;
+                }
+            case ("when"):
+                {
+                    ret = whenColor;
+                    break;
+                }
+        }
+        return ret;
     }
 
     public void Update()
