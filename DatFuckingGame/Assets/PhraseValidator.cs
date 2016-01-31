@@ -11,6 +11,8 @@ public class PhraseValidator : MonoBehaviour {
 
     public event EventHandler<EventArgs>PhraseMatch;
 
+    public float phraseMatchEventDelay = 2f;
+
     //Used to match 
     public string[] phraseMatch = null;
 
@@ -58,7 +60,8 @@ public class PhraseValidator : MonoBehaviour {
         bool isCurrentPhraseValid = isValid();
         if (isCurrentPhraseValid && !wasLastPhraseValid)
         {
-            StartCoroutine(VerifyPhraseAction(2.0f));
+            Debug.Log("MatchFound");
+            StartCoroutine(VerifyPhraseAction(phraseMatchEventDelay));
         }
 
         wasLastPhraseValid = isCurrentPhraseValid;

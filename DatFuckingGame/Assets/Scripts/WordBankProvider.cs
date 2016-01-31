@@ -2,10 +2,11 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 public class WordBankProvider : MonoBehaviour {
 
-    private WordBank wordBank = new WordBank();
+    private WordBank wordBank;
 
     private GameObject[] slots;
 
@@ -13,6 +14,7 @@ public class WordBankProvider : MonoBehaviour {
 
 	// Use this for initialization
 	public void Start () {
+        wordBank = new WordBank();
         this.slots = GameObject.FindGameObjectsWithTag("WordBank");
         RefillEmptyWords();
 	}
@@ -28,15 +30,13 @@ public class WordBankProvider : MonoBehaviour {
             if (slot.GetComponentInChildren<Text>() == null)
             {
                 //TODO: Do something smarter than this.
-                int index = Random.Range(0, wordBank.words.Count);
-
-                KeyValuePair<string, string> field = wordBank.words[index];
+                int index = Random.Range(0, 4);
+                KeyValuePair<string, string> word = wordBank[index];
                 GameObject text = Instantiate(textObject, Vector3.zero, Quaternion.identity) as GameObject;
                 wordValuesDto dto = text.GetComponent<wordValuesDto>();
-                dto.wordText = field.Key;
-                dto.wordType = field.Value;
-                text.GetComponent<Text>().text = field.Key;
-                wordBank.words.Remove(index);
+                dto.wordText = word.Key;
+                dto.wordType = word.Value;
+                text.GetComponent<Text>().text = word.Key;
                 text.transform.SetParent(slot.transform);
             }
         }
