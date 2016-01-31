@@ -18,7 +18,6 @@ public class checkPanel : MonoBehaviour {
 		else {
 			Debug.Log("failed!");
 		}
-
 	}
 
 }
