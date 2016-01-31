@@ -38,6 +38,8 @@ public class WordBankProvider : MonoBehaviour {
                 string word = wordBank.GetWord(phraseValidatorRef.phraseMatch[i]);
                 text = Instantiate(textObject, Vector3.zero, Quaternion.identity) as GameObject;
                 wordValuesDto dto = text.GetComponent<wordValuesDto>();
+                Debug.Log("Word Text: " + word);
+                Debug.Log("Word Type: " + phraseValidatorRef.phraseMatch[i]);
                 dto.wordText = word;
                 dto.wordType = phraseValidatorRef.phraseMatch[i];
                 text.GetComponent<Text>().text = word;

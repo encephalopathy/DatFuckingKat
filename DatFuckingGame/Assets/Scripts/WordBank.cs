@@ -51,22 +51,22 @@ public class WordBank {
         switch (type)
         {
             case "who":
-                wordList = what;
+                wordList = who;
                 break;
             case "what":
-                wordList = where;
+                wordList = what;
                 break;
             case "where":
-                wordList = when;
+                wordList = where;
                 break;
             case "when":
-                wordList = who;
+                wordList = when;
                 break;
         }
         if (wordList.Count == 0) return string.Empty;
         string wordKey = wordList[0];
         wordList.RemoveAt(0);
-        return words[wordKey];
+        return wordKey;
     }
 
     public IEnumerable<TValue> RandomValues<TKey, TValue>(IDictionary<TKey, TValue> dict)
