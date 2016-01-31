@@ -599,6 +599,24 @@ RectTransform:
   m_PrefabParentObject: {fileID: 22497752, guid: 7f3a870c4aebf6047a948215ae6d1a79,
     type: 2}
   m_PrefabInternal: {fileID: 1717356679}
+--- !u!1 &756069277 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100040, guid: cfe4c74711cd4c147b28795e8666ad42, type: 3}
+  m_PrefabInternal: {fileID: 1106359029}
+--- !u!114 &756069279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 756069277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f00643c554a142971840331ad5b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseCam: {fileID: 785527650}
+  zDistance: 2
+  yOffset: -2
 --- !u!1 &785527646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,7 +1858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 614ce3563f5f0794db182df25e2d0dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textObject: {fileID: 186224, guid: c620e32bd437cbb4da9e25448b9cd589, type: 2}
+  textObject: {fileID: 186224, guid: cb096d193dfe3fc4fb6160e938cebbce, type: 2}
   slotPanel: {fileID: 1390296512}
 --- !u!114 &1310791250
 MonoBehaviour:
