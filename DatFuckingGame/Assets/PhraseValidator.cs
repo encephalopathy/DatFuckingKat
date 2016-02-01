@@ -19,6 +19,8 @@ public class PhraseValidator : MonoBehaviour {
     public WordBankProvider wordBankProvider;
     public AudioSource[] audioSouces;
 
+    public int numberOfMatches = 0;
+
     //Used so isValid function does not get called more than once.
     bool wasLastPhraseValid = false;
 
@@ -63,7 +65,7 @@ public class PhraseValidator : MonoBehaviour {
         {
             Debug.Log("MATCH FOUND!!!!");
             VerifyPhraseAction();
-            
+            numberOfMatches++;
         }
         else if (AreAllSlotsFilled() && !isCurrentPhraseValid)
         {
