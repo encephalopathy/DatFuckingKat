@@ -1615,6 +1615,18 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: cfe4c74711cd4c147b28795e8666ad42, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 83a6db838f04d8d409903998c0a40b11, type: 2}
+    - target: {fileID: 11100000, guid: cfe4c74711cd4c147b28795e8666ad42, type: 3}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: 7400008, guid: cfe4c74711cd4c147b28795e8666ad42, type: 3}
+    - target: {fileID: 11100000, guid: cfe4c74711cd4c147b28795e8666ad42, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfe4c74711cd4c147b28795e8666ad42, type: 3}
   m_IsPrefabParent: 0

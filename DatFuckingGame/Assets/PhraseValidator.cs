@@ -130,7 +130,8 @@ public class PhraseValidator : MonoBehaviour {
     {
         ChangePhrase();
         Refresh();
-        PhraseMatch(this, new EventArgs());
+
+        //PhraseMatch(this, new EventArgs());
         if (wordBankProvider != null)
         {
             wordBankProvider.RefillEmptyWords();
