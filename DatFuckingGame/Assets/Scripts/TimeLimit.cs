@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class TimeLimit : MonoBehaviour {
 
-    float startTime = 1000.0f;
-    float timeLimit = 90.0f;
+    public float START_TIME = 12f;
+    float startTime = 12.0f;
     float timeTaken = 0f;
+    float deltaTime = 0f;
 
     public bool timeOver = false;
     public GameObject manager;
     public GameObject logic;
     public GameObject fadeObject;
+
+    public Camera camera;
 
     Text timeLimitText;
     // Use this for initialization
@@ -22,32 +26,59 @@ public class TimeLimit : MonoBehaviour {
         // Format the time nicely
         timeLimitText.text = FormatTime(timeTaken);
 
+        camera = GameObject.FindObjectOfType<Camera>();
+
+    }
+
+    void Awake()
+    {
+        timeOver = false;
+        startTime = START_TIME;
+        deltaTime = 0f;
     }
 
     // Update is called once per frame
     void Update () {
-        timeTaken = startTime - Time.time;
+        deltaTime += Time.deltaTime;
+        timeTaken = startTime - deltaTime;
         // Format the time nicely
-        if (timeTaken < startTime / 2)
-        {
-            GetComponent<Text>().color = Color.yellow;
-        }
-        else if (timeTaken < startTime * .1f)
+        if (timeTaken < startTime / 10)
         {
             GetComponent<Text>().color = Color.red;
         }
+        else if (timeTaken < startTime / 2)
+        {
+            GetComponent<Text>().color = Color.yellow;
+        }
+        
 
         timeLimitText.text = FormatTime(timeTaken);
 
         if (timeTaken < 0) {
+
+            //manager.GetComponent<StateManagerScript>().state = 2;
+            //fadeObject.GetComponent<FadeIn>().FadeToBlack();
+            //logic.SetActive(false);
+            if (!timeOver)
+            {
+                Scene currentScene = SceneManager.GetActiveScene();
+                //.UnloadScene(currentScene.name);
+
+                //new WaitForSeconds(10f);
+                camera.GetComponent<AudioSource>().Stop();
+                //Debug.Log("TIME IS OVER!");
+                Application.LoadLevel(1);
+            }
             timeOver = true;
-            //Debug.Log(timeTaken);
         }
-        else {
-            manager.GetComponent<StateManagerScript>().state=2;
-            fadeObject.GetComponent<FadeIn>().FadeToBlack();
-            logic.SetActive(false);
+        else
+        {
+            timeLimitText.text = FormatTime(timeTaken);
         }
+        //else {
+        //    //Make start button
+            
+        //}
 
     }
 
