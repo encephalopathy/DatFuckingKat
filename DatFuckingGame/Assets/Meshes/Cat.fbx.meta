@@ -80,6 +80,7 @@ ModelImporter:
     7400006: CatEarTwitch
     7400008: CatTailFlop
     9500000: //RootNode
+    11100000: //RootNode
     13700000: Cat
   materials:
     importMaterials: 1
@@ -107,7 +108,7 @@ ModelImporter:
       takeName: Armature|ArmatureAction
       firstFrame: 0
       lastFrame: 1
-      wrapMode: 0
+      wrapMode: 2
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
@@ -619,7 +620,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
