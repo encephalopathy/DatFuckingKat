@@ -11,6 +11,7 @@ public class PhraseValidator : MonoBehaviour {
     public string[][] phraseMatchPossibilities;
 
     public event EventHandler<EventArgs>PhraseMatch;
+    public EffectManager effectManager;
 
     //Used to match 
     public string[] phraseMatch = null;
@@ -21,6 +22,9 @@ public class PhraseValidator : MonoBehaviour {
 	public GameObject[] slots;
     public WordBankProvider wordBankProvider;
     public AudioSource[] audioSouces;
+
+    public Color FlareColor;
+    public Color FlareSmokeColor;
 
     public int numberOfMatches = 0;
 
@@ -132,7 +136,8 @@ public class PhraseValidator : MonoBehaviour {
     {
         ChangePhrase();
         Refresh();
-
+        effectManager.
+        StartCoroutine(effectManager.FlareLights(FlareColor, FlareSmokeColor, 8));
         //PhraseMatch(this, new EventArgs());
         if (wordBankProvider != null)
         {
