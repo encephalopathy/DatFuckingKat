@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TimeLimit : MonoBehaviour {
 
-    public float START_TIME = 12f;
-    float startTime = 12.0f;
+    float startTime = 300.0f;
     float timeTaken = 0f;
     float deltaTime = 0f;
 
@@ -33,7 +32,6 @@ public class TimeLimit : MonoBehaviour {
     void Awake()
     {
         timeOver = false;
-        startTime = START_TIME;
         deltaTime = 0f;
     }
 
@@ -61,12 +59,8 @@ public class TimeLimit : MonoBehaviour {
             //logic.SetActive(false);
             if (!timeOver)
             {
-                Scene currentScene = SceneManager.GetActiveScene();
-                //.UnloadScene(currentScene.name);
 
-                //new WaitForSeconds(10f);
                 camera.GetComponent<AudioSource>().Stop();
-                //Debug.Log("TIME IS OVER!");
                 Application.LoadLevel(1);
             }
             timeOver = true;
