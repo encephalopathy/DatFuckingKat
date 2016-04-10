@@ -114,7 +114,7 @@ public class WordBank {
         words.Add("galloped", "what");
         what.Add("galloped");
 
-        words.Add("watched hungrily" , "what");
+        words.Add("watched hungrily", "what");
         what.Add("watched hungrily");
 
         words.Add("crushed people", "what");
@@ -128,6 +128,27 @@ public class WordBank {
 
         words.Add("read poetry", "what");
         what.Add("read poetry");
+
+        words.Add("performed naughty things", "what");
+        what.Add("performed naughty things");
+
+        words.Add("smoked", "what");
+        what.Add("smoked");
+
+        words.Add("whispered slowly", "what");
+        what.Add("whispered slowly");
+
+        words.Add("vanished", "what");
+        what.Add("vanished");
+
+        words.Add("fooled around", "what");
+        what.Add("fooled around");
+
+        words.Add("ate cereal", "what");
+        what.Add("ate cereal");
+
+        words.Add("defeated the evil mage", "what");
+        what.Add("defeated the evil mage");
 
     }
 
@@ -172,6 +193,26 @@ public class WordBank {
         words.Add("during brunch", "when");
         when.Add("during brunch");
 
+        words.Add("while the rooster sang", "when");
+        when.Add("while the rooster sang");
+
+        words.Add("while the children played", "when");
+        when.Add("while the children played");
+
+        words.Add("during my birthday", "when");
+        when.Add("during my birthday");
+
+        words.Add("at bedtime", "when");
+        when.Add("at bedtime");
+
+        words.Add("all the time", "when");
+        when.Add("all the time");
+
+        words.Add("at highmoon", "when");
+        when.Add("at highmoon");
+
+        words.Add("at the darkest hour", "when");
+        when.Add("at the darkest hour");
     }
 
     private void CreateWhereWords()
@@ -206,8 +247,8 @@ public class WordBank {
         words.Add("in the village", "where");
         where.Add("in the village");
 
-        words.Add("during the ceremony", "where");
-        where.Add("during the ceremony");
+        words.Add("at the ceremony", "where");
+        where.Add("at the ceremony");
 
         words.Add("in the garden", "where");
         where.Add("in the garden");
@@ -215,6 +256,26 @@ public class WordBank {
         words.Add("at the dog park", "where");
         where.Add("at the dog park");
 
+        words.Add("in the bathroom", "where");
+        where.Add("in the bathroom");
+
+        words.Add("by the room", "where");
+        where.Add("by the room");
+
+        words.Add("in the L'Hospital", "where");
+        where.Add("in the L'Hospital");
+
+        words.Add("in the desert", "where");
+        where.Add("in the desert");
+
+        words.Add("at the beach", "where");
+        where.Add("at the beach");
+
+        words.Add("in the attic", "where");
+        where.Add("in the attic");
+
+        words.Add("in the castle", "where");
+        where.Add("in the castle");
     }
 
     private void CreateWhoWords()
@@ -257,6 +318,27 @@ public class WordBank {
 
         words.Add("Cecil", "who");
         who.Add("Cecil");
+
+        words.Add("the cherry", "who");
+        who.Add("the cherry");
+
+        words.Add("the children", "who");
+        who.Add("the children");
+
+        words.Add("the butcher", "who");
+        who.Add("the butcher");
+
+        words.Add("the corrupt politician", "who");
+        who.Add("the corrupt politician");
+
+        words.Add("Barney", "who");
+        who.Add("Barney");
+
+        words.Add("I", "who");
+        who.Add("I");
+
+        words.Add("the hero", "who");
+        who.Add("the hero");
 
     }
 	
