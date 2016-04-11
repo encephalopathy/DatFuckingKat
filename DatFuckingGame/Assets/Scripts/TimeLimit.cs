@@ -61,7 +61,7 @@ public class TimeLimit : MonoBehaviour {
             {
 
                 camera.GetComponent<AudioSource>().Stop();
-                Application.LoadLevel(1);
+                Application.LoadLevel(2);
             }
             timeOver = true;
         }

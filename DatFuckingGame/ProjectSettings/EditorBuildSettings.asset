@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/GGJ2016_SplashScreen.unity
   - enabled: 1
     path: Assets/Scenes/CatScene.unity
+  - enabled: 1
+    path: Assets/Scenes/ScoreScreen.unity
