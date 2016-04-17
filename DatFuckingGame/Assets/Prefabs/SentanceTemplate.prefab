@@ -106,7 +106,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: This is A Sample Sentace For Testing Resolution.
+  m_Text: This is A Sample Sentece For Testing Resolution.
 --- !u!222 &22219694
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -223,7 +223,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Text
-      value: This is A Sample Sentace For Testing Resolution.
+      value: This is A Sample Sentece For Testing Resolution.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

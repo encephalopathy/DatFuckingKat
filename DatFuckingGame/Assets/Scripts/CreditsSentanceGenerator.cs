@@ -23,7 +23,7 @@ public class CreditsSentanceGenerator : MonoBehaviour {
             {
                 CreateSentance(char.ToUpper(sentanceText[0]) + sentanceText.Substring(1));
                 rectHeight += SentanceHeight;
-                Debug.Log("Added Sentance: " + sentanceText+ ", Rectangle Height = "+rectHeight);
+                Debug.Log("Added Sentence: " + sentanceText+ ", Rectangle Height = "+rectHeight);
             }
         }
 
