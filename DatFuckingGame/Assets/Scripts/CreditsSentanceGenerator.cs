@@ -6,7 +6,7 @@ public class CreditsSentanceGenerator : MonoBehaviour {
     public string FirstSentance;
     public GameObject SentanceTemplate;
     public RectTransform rectObject;
-    public float SentanceHeight = 100;
+    public float SentenceHeight = 100;
 
     public UnityEngine.UI.Text ScoreText;
 
@@ -22,13 +22,14 @@ public class CreditsSentanceGenerator : MonoBehaviour {
             if (sentanceText.Length > 1)
             {
                 CreateSentance(char.ToUpper(sentanceText[0]) + sentanceText.Substring(1));
-                rectHeight += SentanceHeight;
+                //rectHeight += SentenceHeight;
                 Debug.Log("Added Sentence: " + sentanceText+ ", Rectangle Height = "+rectHeight);
             }
         }
 
-        //rectHeight = transform.childCount * SentanceHeight;
-        //rectObject.sizeDelta = new Vector2(rectObject.rect.width, rectHeight);
+        rectHeight = transform.childCount * SentenceHeight;
+        rectObject.sizeDelta = new Vector2(rectObject.rect.width, 0);
+        rectObject.sizeDelta = new Vector2(rectObject.rect.width, rectHeight+(SentenceHeight*3));
         ScoreText.text = string.Format("Total Sentance Matches: {0}", SentanceStaticSaver.TotalMatches);
 	}
 
