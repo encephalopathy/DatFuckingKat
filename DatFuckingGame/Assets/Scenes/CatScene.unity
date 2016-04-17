@@ -538,6 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b635b83facff2744d93dbd4074fa8557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startTime: 30
   timeOver: 0
   manager: {fileID: 0}
   logic: {fileID: 0}

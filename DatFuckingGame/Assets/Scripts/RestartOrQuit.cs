@@ -7,15 +7,11 @@ public class RestartOrQuit : MonoBehaviour {
 	void Start () {
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public void Restart()
     {
         //Something to reset all static variables
+        SentanceStaticSaver.Clear();
         Application.LoadLevel(1);
     }
 

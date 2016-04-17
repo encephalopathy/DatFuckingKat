@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TimeLimit : MonoBehaviour {
 
-    float startTime = 300.0f;
+    public float startTime = 300.0f;
     float timeTaken = 0f;
     float deltaTime = 0f;
 
