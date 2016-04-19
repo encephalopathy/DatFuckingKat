@@ -14,7 +14,7 @@ public class Score : MonoBehaviour {
 	void Update () {
 	    if (phraseValidator != null)
         {
-            GetComponent<Text>().text = string.Format("Number of Maches: {0}", phraseValidator.GetComponent<PhraseValidator>().numberOfMatches);
+            GetComponent<Text>().text = string.Format("Number of Matches: {0}", phraseValidator.GetComponent<PhraseValidator>().numberOfMatches);
         }
 	}
 }
