@@ -55,30 +55,6 @@ public class WordBankProvider : MonoBehaviour {
             {
                 text = CreateTextObject(i, "when", slot, phraseValidatorRef);
             }
-            //if (i < phraseValidatorRef.phraseMatch.Length)
-            //{
-            //    string word = wordBank.GetWord(phraseValidatorRef.phraseMatch[i]);
-            //    text = Instantiate(textObject, Vector3.zero, Quaternion.identity) as GameObject;
-            //    wordValuesDto dto = text.GetComponent<wordValuesDto>();
-            //    Debug.Log("Word Text: " + word);
-            //    Debug.Log("Word Type: " + phraseValidatorRef.phraseMatch[i]);
-            //    dto.wordText = word;
-            //    dto.wordType = phraseValidatorRef.phraseMatch[i];
-            //    text.GetComponent<Text>().text = word;
-            //    text.transform.SetParent(slot.transform);
-            //}
-            //if (slot.GetComponentInChildren<Text>() == null)
-            //{
-            //    //TODO: Do something smarter than this.
-            //    int index = Random.Range(0, 4);
-            //    KeyValuePair<string, string> word = wordBank[index];
-            //    text = Instantiate(textObject, Vector3.zero, Quaternion.identity) as GameObject;
-            //    wordValuesDto dto = text.GetComponent<wordValuesDto>();
-            //    dto.wordText = word.Key;
-            //    dto.wordType = word.Value;
-            //    text.GetComponent<Text>().text = word.Key;
-            //    text.transform.SetParent(slot.transform);
-            //}
             if (text != null)
             {
                 textStringToShuffle.Add(text.GetComponent<Text>());

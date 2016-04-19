@@ -230,6 +230,13 @@ public class PhraseValidator : MonoBehaviour {
             }
         }
 
+        if (valid)
+        {
+            SentanceStaticSaver.Sentances.Add(slotOne.wordText  + " "+
+                slotTwo.wordText + " " +slotThree.wordText + " "
+                + slotFour.wordText + ".");
+        }
+        
         return valid;
 	}
 

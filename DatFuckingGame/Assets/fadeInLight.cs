@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class fadeInLight : MonoBehaviour {
 
@@ -12,6 +13,8 @@ public float fadeSpeed = 1.5f;          // Speed that the screen fades to and fr
     
     void Awake ()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
+        Debug.Log(currentScene.name);
         // Set the texture so that it is the the size of the screen and covers it.
         GetComponent<GUITexture>().pixelInset = new Rect(0f, 0f, Screen.width, Screen.height);
     }
@@ -68,7 +71,7 @@ public float fadeSpeed = 1.5f;          // Speed that the screen fades to and fr
         
         // Start fading towards black.
         FadeToBlack();
-        
+
         // If the screen is almost black...
         if(GetComponent<GUITexture>().color.a >= 0.95f)
             // ... reload the level.
