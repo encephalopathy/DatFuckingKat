@@ -44,7 +44,7 @@ public class TimeLimit : MonoBehaviour {
         {
             GetComponent<Text>().color = Color.red;
         }
-        else if (timeTaken < startTime * 0.313333333333333f) //THIS IS WHEN THE SONG GETS INTENSE!!!
+        else if (timeTaken < startTime * 0.32f) //THIS IS WHEN THE SONG GETS INTENSE!!!
         {
             GetComponent<Text>().color = Color.yellow;
         }
